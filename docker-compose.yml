@@ -1,0 +1,55 @@
+version: '3.0.0'
+
+services:
+  client:
+    build:
+      context: ./
+      dockerfile: ./docker/client/Dockerfile
+    container_name: ih42-client
+    ports:
+      - 3000:3000
+    restart: always
+    networks:
+      - ih42-network
+    volumes:
+      - ./client:/app
+      - ih42-client-node-modules:/app/node_modules
+  
+  server:
+    build:
+      context: ./
+      dockerfile: ./docker/server/Dockerfile
+    container_name: ih42-server
+    ports:
+      - 4000:4000
+    restart: always
+    networks:
+      - ih42-network
+    volumes:
+      - ./server:/app
+      - ih42-server-node-modules:/app/node_modules
+
+  database:
+    build:
+      context: ./docker/database
+      dockerfile: Dockerfile
+    container_name: ih42-database
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+    ports:
+      - 3306:3306
+    networks:
+      - ih42-network
+    volumes:
+      - ih42-database:/var/lib/mysql
+
+networks:
+  ih42-network:
+    driver: bridge
+
+volumes:
+  ih42-client:
+  ih42-client-node-modules:
+  ih42-server:
+  ih42-server-node-modules:
+  ih42-database:
