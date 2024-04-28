@@ -1,17 +1,43 @@
+
+/**
+ * 
+ * テスト用クライアントページ
+ * 実行確認が終りましたら、削除を推奨いたします。
+ * 
+ */
+
+
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-function App () {
-
+export default function test() {
+    
   const [testGetResult,setTestGetResult] = useState([]);
   const [testPostForm, setTestPostForm] = useState("");
   const [testPostResult, setTestPostResult] = useState([]);
+  const [testClientGet, setTestClientGet] = useState("");
 
   useEffect(() => {
-    axios.get('http://localhost:4000/test')
-    .then(res => {
-      setTestGetResult(res.data);
-    });
+    const testUseEffect = async () => {
+      
+      await axios.get('http://localhost:4000/test')
+      .then(res => {
+        setTestGetResult(res.data);
+      }).catch(error => {
+        setTestGetResult("サーバーサイドGETレスポンスエラー");
+      });
+
+      await axios.get('/api/hello')
+      .then(res => {
+        console.log(res.data);
+        setTestClientGet(res.data.msg);
+      })
+      .catch(error => {
+        setTestClientGet("クライアントサイドGETレスポンスエラー");
+      });
+    }
+
+    testUseEffect();
   },[]);
 
   const handleTestFormChange = (event) => {
@@ -63,8 +89,13 @@ function App () {
         </form>
         <p>レスポンス : { testPostResult }</p>
       </div>
+
+      <div>
+        <h1>対クライアントサーバーGET送信</h1>
+        <p>クライアントサーバー側独自のAPIを呼び出して適切なレスポンス結果が得られるかを確かめます</p>
+        <p>リクエストURL : GET /api/hello</p>
+        <p>レスポンス : { testClientGet }</p>
+      </div>
     </>
   )
 }
-
-export default App;

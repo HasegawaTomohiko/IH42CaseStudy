@@ -11,20 +11,21 @@ const PORT = 4000;
 //ルーティング設定(router)
 // const {$router} = require("{$router's file path}");
 
-// //Sequelize初期設定(MySQL接続)
-// const sequelize = new Sequelize('ih42','root',passw,{
-//   host: 'ih42-database',
-//   dialect: 'mysql',
-// });
+//Sequelize初期設定(MySQL接続)
+const sequelize = new Sequelize('ih42','root','root',{
+  host: 'ih42-database',
+  dialect: 'mysql',
+});
 
-// //MySQL接続確認
-// sequelize.authenticate()
-//   .then(() => console.log('MySQLとの接続が確認出来ました'))
-//   .catch((err) => {
-//     console.log('MySQLとの接続が確認できませんでした。');
-//     console.log('<<<<<===============error log===============>>>>>')
-//     console.errror(err);
-//   });
+//MySQL接続確認
+sequelize
+.authenticate()
+.then(() => console.log('MySQLとの接続が確認出来ました'))
+.catch((err) => {
+  console.log('MySQLとの接続が確認できませんでした。');
+  console.log('<<<<<===============error log===============>>>>>')
+  console.error(err);
+});
 
 //ミドルウェア設定
 server.use(cors());

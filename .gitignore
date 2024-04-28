@@ -5,6 +5,17 @@
 
 #client
 /client/node_modules
+/client/.next/
+/client/out/
+/client/.pnp
+/client/.pnp.js
+/client/.yarn/install-stage.gz
+/client/npm-debug.log*
+/client/yarn-debug.log*
+/client/yarun-error.log*
+/client/.vercel
+/client/.DS_Store
+/client/*.pem
 /client/build
-/client/.env
+/client/.env*
 /client/package-lock.json
