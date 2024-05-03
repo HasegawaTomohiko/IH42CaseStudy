@@ -1,1 +1,3 @@
---- init.sql ---
+CREATE DATABASE IF NOT EXISTS ih42;
+
+USE ih42;

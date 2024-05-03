@@ -4,7 +4,7 @@ services:
   #クライアントサイド設定
   client:
     build:
-      context: ./client
+      context: ./
       dockerfile: ./docker/client/Dockerfile
     container_name: ih42-client
     ports:
@@ -19,7 +19,7 @@ services:
   #サーバーサイド設定
   server:
     build:
-      context: ./server
+      context: ./
       dockerfile: ./docker/server/Dockerfile
     container_name: ih42-server
     ports:
