@@ -5,6 +5,7 @@ services:
   client:
     build:
       context: ./
+      image: ih42casestudy-client
       dockerfile: ./docker/client/Dockerfile
     container_name: ih42-client
     ports:
@@ -20,6 +21,7 @@ services:
   server:
     build:
       context: ./
+      image: ih42casestudy-server
       dockerfile: ./docker/server/Dockerfile
     container_name: ih42-server
     ports:
@@ -35,6 +37,7 @@ services:
   #データベース設定
   database:
     build:
+      image: ih42casestudy-database
       dockerfile: ./docker/database/Dockerfile
     container_name: ih42-database
     environment:
