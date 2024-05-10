@@ -15,7 +15,6 @@ const PORT = 4000;
 const sequelize = new Sequelize('ih42','root','root',{
   host: 'ih42-database',
   dialect: 'mysql',
-  timezone: 'Asia/Tokyo',
 });
 
 //MySQL接続確認

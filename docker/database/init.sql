@@ -1,3 +1,5 @@
+SET GLOBAL time_zone = 'Asia/Tokyo';
+
 CREATE DATABASE IF NOT EXISTS ih42;
 
 USE ih42;
