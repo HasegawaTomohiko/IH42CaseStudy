@@ -5,8 +5,8 @@ services:
   client:
     build:
       context: ./
-      image: ih42casestudy-client
       dockerfile: ./docker/client/Dockerfile
+    image: ih42casestudy-client
     container_name: ih42-client
     ports:
       - 3000:3000
@@ -21,8 +21,8 @@ services:
   server:
     build:
       context: ./
-      image: ih42casestudy-server
       dockerfile: ./docker/server/Dockerfile
+    image: ih42casestudy-server
     container_name: ih42-server
     ports:
       - 4000:4000
@@ -37,8 +37,8 @@ services:
   #データベース設定
   database:
     build:
-      image: ih42casestudy-database
       dockerfile: ./docker/database/Dockerfile
+    image: ih42casestudy-database
     container_name: ih42-database
     environment:
       - MYSQL_ROOT_PASSWORD=root
