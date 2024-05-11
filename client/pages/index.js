@@ -1,10 +1,11 @@
+import Home from "@/components/home";
 import Link from "next/link";
 
-export default function Home() {
+export default function index() {
   return (
-    <>
-      <h1>Home</h1>
+    <main>
+      <Home />
       <Link href="/test">レスポンス確認用(要削除)</Link>
-    </>
+    </main>
   )
 }
