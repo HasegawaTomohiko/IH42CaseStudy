@@ -4,12 +4,16 @@ const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const { MongoClient,ServerApiVersion } = require('mongodb');
 
+require('dotenv').config();
+
 //サーバー設定
 const server = express();
 const PORT = 4000;
 
 //ルーティング設定(router)
 // const {$router} = require("{$router's file path}");
+
+console.log(process.env.MONGODB_USER);
 
 const mongodb = new MongoClient(`mongodb+srv://${process.env.MONGODB_USER}:${process.env.MONGODB_PASSWORD}@casestudy.jynr4xd.mongodb.net/?retryWrites=true&w=majority&appName=CaseStudy`,{
   serverApi:{
