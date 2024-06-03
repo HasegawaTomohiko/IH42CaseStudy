@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const { MongoClient,ServerApiVersion } = require('mongodb');
+const mongoose = require('mongoose');
 
 require('dotenv').config();
 
@@ -13,29 +14,15 @@ const PORT = 4000;
 //ルーティング設定(router)
 // const {$router} = require("{$router's file path}");
 
-console.log(process.env.MONGODB_USER);
-
-const mongodb = new MongoClient(`mongodb+srv://${process.env.MONGODB_USER}:${process.env.MONGODB_PASSWORD}@casestudy.jynr4xd.mongodb.net/?retryWrites=true&w=majority&appName=CaseStudy`,{
-  serverApi:{
-    version: ServerApiVersion.v1,
-    strict: true,
-    deprecationErrors: true,
-  }
-});
-
-async function runMongoDb() {
-  try {
-    await mongodb.connect();
-
-    await mongodb.db("admin").command({ ping : 1 });
-
-    console.log("MongoDBとの接続が完了しました");
-  } finally {
-    await mongodb.close();
-  }
-}
-
-runMongoDb().catch(console.dir);
+mongoose.connect(`mongodb+srv://${process.env.MONGODB_USER}:${process.env.MONGODB_PASSWORD}@casestudy.jynr4xd.mongodb.net/?retryWrites=true&w=majority&appName=CaseStudy`)
+  .then(() => {
+    console.log("MongoDBとの接続に成功しました。");
+  })
+  .catch(err => {
+    console.log("MongoDBとの接続に失敗しました。")
+    console.log("<<<=========== error log =============>>>");
+    console.error(err);
+  });
 
 //ミドルウェア設定
 server.use(cors());
