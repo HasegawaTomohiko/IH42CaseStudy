@@ -2,7 +2,10 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
-const { Sequelize } = require('sequelize');
+const { MongoClient,ServerApiVersion } = require('mongodb');
+const mongoose = require('mongoose');
+
+require('dotenv').config();
 
 //サーバー設定
 const server = express();
@@ -11,22 +14,15 @@ const PORT = 4000;
 //ルーティング設定(router)
 // const {$router} = require("{$router's file path}");
 
-//Sequelize初期設定(MySQL接続)
-const sequelize = new Sequelize('ih42','root','root',{
-  host: 'ih42-database',
-  dialect: 'mysql',
-  timezone: 'Asia/Tokyo',
-});
-
-//MySQL接続確認
-sequelize
-.authenticate()
-.then(() => console.log('MySQLとの接続が確認出来ました'))
-.catch((err) => {
-  console.log('MySQLとの接続が確認できませんでした。');
-  console.log('<<<<<===============error log===============>>>>>')
-  console.error(err);
-});
+mongoose.connect(`mongodb+srv://${process.env.MONGODB_USER}:${process.env.MONGODB_PASSWORD}@casestudy.jynr4xd.mongodb.net/?retryWrites=true&w=majority&appName=CaseStudy`)
+  .then(() => {
+    console.log("MongoDBとの接続に成功しました。");
+  })
+  .catch(err => {
+    console.log("MongoDBとの接続に失敗しました。")
+    console.log("<<<=========== error log =============>>>");
+    console.error(err);
+  });
 
 //ミドルウェア設定
 server.use(cors());
