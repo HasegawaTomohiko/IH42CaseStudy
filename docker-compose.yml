@@ -34,6 +34,21 @@ services:
       - ./server:/app
       - ih42-server-node-modules:/app/node_modules
 
+  #データベース設定
+  database:
+    build:
+      dockerfile: ./docker/database/Dockerfile
+    image: ih42casestudy-database
+    container_name: ih42-database
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+    ports:
+      - 3306:3306
+    networks:
+      - ih42-network-server
+    volumes:
+      - ih42-database:/var/lib/mysql
+
 #ネットワーク設定
 networks:
   ih42-network:
@@ -45,3 +60,4 @@ networks:
 volumes:
   ih42-client-node-modules:
   ih42-server-node-modules:
+  ih42-database:
