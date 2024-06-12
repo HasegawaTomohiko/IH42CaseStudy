@@ -71,6 +71,7 @@ export default function test() {
       <div>
         <h1>
           クライアント起動確認完了
+          はるき
         </h1>
         <p>クライアントは正常に動作しました。</p>
       </div>
