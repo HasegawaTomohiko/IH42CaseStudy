@@ -1,17 +1,21 @@
-const Location = require('./model/Location'); // Locationモデルが正しく定義されていることを仮定
+const Location = require('../model/Location'); // Locationモデルが正しく定義されていることを仮定
 
 const initSocket = (io) => {
   io.on('connection', (socket) => {
     console.log('New client connected');
 
     socket.on('cl_sendLocation', async (data) => {
+      
+      const { driverId, lat, lon } = data;
+      if (!driverId || lat === undefined || lon === undefined) return socket.emit('error', 'Missing required fields');
+
       try {
-        const location = new Location({
-          driverId: data.driverId,
-          lat: data.lat,
-          lon: data.lon
+        await Location.create({
+          driverId,
+          lat,
+          lon
         });
-        await location.save();
+
       } catch (err) {
         console.log('Error saving location:', err.message);
         socket.emit('save_error', { message: 'Failed to save location' });
