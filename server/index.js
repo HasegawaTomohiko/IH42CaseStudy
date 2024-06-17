@@ -1,3 +1,5 @@
+//index.js
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
@@ -9,31 +11,22 @@ const mongoose = require('mongoose');
 const http = require('http'); // HTTP
 const { Server } = require('socket.io');  //SocketIO
 
+const socket = require('./Socket');
+const initSocket = require('./Socket');
+
+
+
+
 require('dotenv').config();
 
 //サーバー設定
 const server = express();
 const PORT = 4000;
 
-// Socket.IO用のポート
-const SOCKET_PORT = 4001; 
-
+const SocketIO_PORT = 4001;
 
 // HTTPサーバー
 const httpServer = http.createServer(server);
-
-// Socket.IOサーバー
-const io = new Server(httpServer, {
-  cors: {
-    origin: "*",
-    methods: ["GET", "POST"]
-  }
-});
-
-// Socket.IOポートの設定
-httpServer.listen(SOCKET_PORT, () => {
-  console.log(`Socket.IO サーバー起動開始 : http://localhost:${SOCKET_PORT}`);
-});
 
 
 
@@ -80,12 +73,12 @@ server.listen(PORT, () => {
   console.log(`サーバー起動開始 : http://localhost:${PORT}`);
 });
 
-// Socket.IO
-io.on('connection', (socket) => {
-  console.log('ユーザーが接続しました');
 
-  socket.on('disconnect', () => {
-    console.log('ユーザーが切断しました');
-  });
+initSocket(SocketIO_PORT);
 
-});
+// //Socketサーバー起動
+// server.listen(SocketIO_PORT, () => {
+//   console.log(`Socketサーバー起動開始 : http://localhost:${SocketIO_PORT}`);
+// });
+
+
