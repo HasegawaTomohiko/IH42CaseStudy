@@ -9,5 +9,6 @@ RUN npm install
 COPY ./server .
 
 EXPOSE 4000
+EXPOSE 4001
 
 CMD ["npm","run","dev"]
