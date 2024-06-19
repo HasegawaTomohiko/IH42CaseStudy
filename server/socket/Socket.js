@@ -1,4 +1,4 @@
-const Location = require('../model/Location'); // Locationモデルが正しく定義されていることを仮定
+const Location = require('../models/Location'); // Locationモデルが正しく定義されていることを仮定
 
 const initSocket = (io) => {
   io.on('connection', (socket) => {
