@@ -9,4 +9,6 @@ const DriverSchema = new Schema({
   timestamps: false
 });
 
-module.exports = mongoose.model('Drivers',DriverSchema);
+const Drivers = mongoose.model('Drivers',DriverSchema)
+
+module.exports = Drivers;
