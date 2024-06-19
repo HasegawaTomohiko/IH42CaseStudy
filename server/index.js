@@ -8,6 +8,7 @@ const mongoose = require('mongoose');
 const http = require('http'); // HTTP
 const socketIo = require('socket.io');  //SocketIO
 const initSocket = require('./socket/Socket');
+const passport = require('passport');
 
 require('dotenv').config();
 
@@ -35,10 +36,12 @@ mongoose.connect(`mongodb+srv://${process.env.MONGODB_USER}:${process.env.MONGOD
 server.use(cors());
 server.use(express.json());
 server.use(cookieParser());
+server.use(passport.initialize());
 server.use(bodyParser.urlencoded({extended: false}));
 
 //サーバールーティング設定
 //server.use("${routerURL},${router variable}");
+server.use('/auth',require('./routes/auth'));
 
 //テストAPI
 server.get('/',(req,res) => {
