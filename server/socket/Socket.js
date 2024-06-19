@@ -22,8 +22,23 @@ const initSocket = (io) => {
       }
     });
 
-    socket.on('disconnect', () => {
+    //切断時の処理
+    socket.on('disconnect', async () => {
       console.log('Client disconnected');
+
+      const driverId = socketDriverMap[socket.id];
+      if(driverId){
+        try{
+          //対応するdriverIdの位置情報削除
+          await Location.deleteMany({ driverId });
+          delete socketDriverMap [socket.id];
+          // 削除成功
+          console.log(`Locations for driverId ${driverId} successfully deleted`); 
+        }catch( err ){
+          //削除失敗
+          console.log('Error deleting location:', err.message);
+        }
+      }
     });
   });
 
