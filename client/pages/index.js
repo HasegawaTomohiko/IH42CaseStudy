@@ -1,15 +1,14 @@
 import Home from "@/components/home";
 import Link from "next/link";
-
+import HomeTop from "@/components/home/top";
 import Header from "@/components/layout/header";
-import BasicButtons from"@/components/home/top";
 
 
-export default function index() {
+export default function HomePage() {
   return (
-    <>
-          <Header menutitle="index" />
-         <Home />
-         </>
-  )
+    <div>
+      <Header menutitle="index" />
+      <HomeTop />
+    </div>
+  );
 }
