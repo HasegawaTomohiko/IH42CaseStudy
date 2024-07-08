@@ -26,6 +26,7 @@ services:
     container_name: ih42-server
     ports:
       - 4000:4000
+      - 4001:4001
     restart: always
     networks:
       - ih42-network

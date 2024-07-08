@@ -1,16 +1,23 @@
+//index.js
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
-const { MongoClient,ServerApiVersion } = require('mongodb');
 const mongoose = require('mongoose');
+const http = require('http'); // HTTP
+const socketIo = require('socket.io');  //SocketIO
+const initSocket = require('./socket/Socket');
 const passport = require('passport');
 
 require('dotenv').config();
 
 //サーバー設定
-const server = express();
 const PORT = 4000;
+const SocketIO_PORT = 4001;
+const server = express();
+const httpServer = http.createServer(server);
+const io = socketIo(httpServer);
 
 //ルーティング設定(router)
 // const {$router} = require("{$router's file path}");
@@ -56,3 +63,13 @@ server.post('/test',(req,res) => {
 server.listen(PORT, () => {
   console.log(`サーバー起動開始 : http://localhost:${PORT}`);
 });
+
+
+initSocket(io);
+
+// //Socketサーバー起動
+httpServer.listen(SocketIO_PORT, () => {
+  console.log(`Socketサーバー起動開始 : http://localhost:${SocketIO_PORT}`);
+});
+
+
