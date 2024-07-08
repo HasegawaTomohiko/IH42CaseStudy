@@ -1,6 +1,8 @@
+//authController.js
+
 const Driver = require('../models/Driver');
 const bcrypt = require('bcryptjs');
-const { generateJWT } = require('../middleware/authMiddleware');
+
 
 exports.login = async (req, res) => {
   const { driverId, password } = req.body;
