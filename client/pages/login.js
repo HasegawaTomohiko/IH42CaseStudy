@@ -1,14 +1,13 @@
-import React from 'react';
-import RegisterHeader from '@/components/login/header';
-import FormPropsTextFields from '@/components/login/form';
+
+import FormPropsTextFields from "@/components/login";
+import Header from "@/components/layout/header";
 
 export default function login() {
-  return (
-    <>
-      <RegisterHeader />
+    return (
+      <>
+          <Header menutitle="ログイン" />
+          <FormPropsTextFields />
+      </>
+    )
+  }
 
-        <FormPropsTextFields />
-
-    </>
-  );
-}

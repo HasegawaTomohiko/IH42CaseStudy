@@ -2,9 +2,9 @@ FROM node:20.12.2-alpine
 
 WORKDIR /app
 
-COPY ../package*.json ./
+COPY ./client/package*.json ./
 
-CMD ["npm","install"]
+RUN npm install
 
 COPY ./client .
 

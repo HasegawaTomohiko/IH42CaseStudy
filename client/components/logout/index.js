@@ -29,7 +29,7 @@ export default function FormPropsTextFields() {
         />
 
         <Stack spacing={2} direction="row">
-            <Button variant="contained" href='map'>ログイン</Button>
+            <Button variant="contained" href='map'>ログアウト</Button>
         </Stack>
 
     </Box>

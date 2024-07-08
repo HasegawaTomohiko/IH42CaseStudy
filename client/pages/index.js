@@ -1,12 +1,14 @@
 import Home from "@/components/home";
-import { AppBar } from "@mui/material";
 import Link from "next/link";
+import HomeTop from "@/components/home/top";
+import Header from "@/components/layout/header";
 
 
-export default function index() {
+export default function HomePage() {
   return (
-    <main>
-      <Home />
-    </main>
-  )
+    <div>
+      <Header menutitle="index" />
+      <HomeTop />
+    </div>
+  );
 }

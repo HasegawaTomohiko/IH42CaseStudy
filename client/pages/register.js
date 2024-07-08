@@ -1,17 +1,13 @@
-import React from 'react';
-import RegisterHeader from '@/components/register/header';
-import FormPropsTextFields from '@/components/register/form';
-import Home from '@/pages/index';
+
+import FormPropsTextFields from "@/components/register";
+import Header from "@/components/layout/header";
 
 export default function Register() {
-  return (
-    <>
-      <RegisterHeader />
-
-        <FormPropsTextFields />
-
-    </>
-  );
-}
-
+    return (
+      <>
+          <Header menutitle="新規登録" />
+          <FormPropsTextFields />
+      </>
+    )
+  }
 
