@@ -1,10 +1,14 @@
+import Home from "@/components/home";
 import Link from "next/link";
+import HomeTop from "@/components/home/top";
+import Header from "@/components/layout/header";
 
-export default function Home() {
+
+export default function HomePage() {
   return (
-    <>
-      <h1>Home</h1>
-      <Link href="/test">レスポンス確認用(要削除)</Link>
-    </>
-  )
+    <div>
+      <Header menutitle="index" />
+      <HomeTop />
+    </div>
+  );
 }

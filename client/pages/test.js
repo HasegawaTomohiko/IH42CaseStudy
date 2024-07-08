@@ -6,7 +6,6 @@
  * 
  */
 
-
 import axios from "axios";
 import { useEffect, useState } from "react";
 
@@ -17,6 +16,7 @@ export default function test() {
   const [testPostResult, setTestPostResult] = useState([]);
   const [testClientGet, setTestClientGet] = useState("");
 
+  //ページをビルドした時に一回だけ実行する
   useEffect(() => {
     const testUseEffect = async () => {
       
@@ -40,10 +40,12 @@ export default function test() {
     testUseEffect();
   },[]);
 
+  // フォームを入力している時のプログラム(入力系なら必須)
   const handleTestFormChange = (event) => {
     setTestPostForm(event.target.value);
   }
 
+  // ボタンを押したときのプログラム
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -63,11 +65,13 @@ export default function test() {
     }
   };
 
+  // 表示するページ部分
   return (
     <>
       <div>
         <h1>
           クライアント起動確認完了
+          はるき
         </h1>
         <p>クライアントは正常に動作しました。</p>
       </div>

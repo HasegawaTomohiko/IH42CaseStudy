@@ -1,0 +1,52 @@
+/* reset.css */
+
+/* ページ全体の要素 */
+html,body,div,span,applet,object,iframe,
+h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,
+acronym,address,big,code,cite,del,dfn,em,
+font,img,ins,kbd,q,s,samp,small,strike,strong,
+sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,
+fieldset,form,label,legend,
+table,caption,tbody,tfoot,thead,tr,th,td {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+}
+
+/* リストのスタイルをリセット */
+ol,ul {
+  list-style: none;
+}
+
+/* ブロック要素のレイアウト */
+blockquote,q {
+  quotes: none;
+}
+
+/* リンクの装飾をリセット */
+a {
+  text-decoration: none;
+}
+
+/* 行の高さをデフォルトに戻す */
+ins {
+  text-decoration: none;
+}
+
+
+
+/* ボックスのサイズをデフォルトに戻す */
+hr,fieldset {
+  display: block;
+  box-sizing: content-box;
+}
+
+/* テーブルのボーダースタイルをリセット */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
