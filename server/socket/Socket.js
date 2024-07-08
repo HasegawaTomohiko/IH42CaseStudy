@@ -1,3 +1,4 @@
+
 const Location = require('../models/Location'); 
 const passport = require('passport');
 const passportJWT = require('passport-jwt');
@@ -7,6 +8,7 @@ const routes = express.Router();
 
 
 const socketDriverMap = {}; // 初期化
+
 
 const initSocket = (io) => {
   io.on('connection', (socket) => {
