@@ -1,3 +1,4 @@
+
 import FormPropsTextFields from "@/components/register";
 import Header from "@/components/layout/header";
 
@@ -9,3 +10,4 @@ export default function Register() {
       </>
     )
   }
+
