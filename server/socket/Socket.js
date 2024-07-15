@@ -31,7 +31,7 @@ const initSocket = (io) => {
       socketDriverMap[socket.id] = driverId;
 
       try {
-        await Location.create({ driverId, lat, lon });
+        await Location.findOneAndUpdate({ driverId }, {lat, lon, timestamp: new Date()}, {upsert: true, new: true});
       } catch (err) {
         console.log('Error saving location:', err.message);
         socket.emit('save_error', { message: 'Failed to save location' });

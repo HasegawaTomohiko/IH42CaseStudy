@@ -17,7 +17,13 @@ const PORT = 4000;
 const SocketIO_PORT = 4001;
 const server = express();
 const httpServer = http.createServer(server);
-const io = socketIo(httpServer);
+const io = socketIo(httpServer, {
+  cors: {
+    origin: 'http://localhost:3000',
+    methods: ['GET', 'POST'],
+    allowdHeaders: ['Content-Type']
+  }
+});
 
 //ルーティング設定(router)
 // const {$router} = require("{$router's file path}");
@@ -41,7 +47,6 @@ server.use(bodyParser.urlencoded({extended: false}));
 
 //サーバールーティング設定
 //server.use("${routerURL},${router variable}");
-server.use('/auth',require('./routes/auth'));
 
 //テストAPI
 server.get('/',(req,res) => {
