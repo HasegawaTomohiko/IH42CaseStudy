@@ -9,8 +9,10 @@ import styles from "./register.module.scss";
 
 console.log(styles);
 
-export default function FormPropsTextFields() {
+
+export default function Register() {
   return (
+
     <Box
       component="form"
       className={styles.container}
@@ -66,5 +68,7 @@ export default function FormPropsTextFields() {
         </Stack>
 
     </Box>
+
   );
 }
+
